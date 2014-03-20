@@ -109,6 +109,7 @@
 				window.removeEventListener('mouseup', this.boundCancel, true);
 				window.removeEventListener('touchend', this.boundCancel, true);
 				window.removeEventListener('touchcancel', this.boundCancel, true);
+				this.fire('cancel');
 			};
 			return {
 			ready: function() {
@@ -162,7 +163,11 @@
 			press:		0,
 			ttflag:		0,
 			vtflag:		0,
-			pointerdown: function(e) {
+			valueChanged: function(oldVal, newVal) {
+				if (this.setValue(newVal))
+					this.fire('change');
+           		},
+ 			pointerdown: function(e) {
 				if(!this.enable)
 					return;
 				if(e.touches)
