@@ -181,6 +181,10 @@ keyboard.addEventListener('change', function(e) {
 
 **Note**: The addEventListener() function is recommended for event handler setup instead of 'onchange=' attribute. 'onchange=' attribute seems not work on Safari.
 
+### 'cancel'
+`webaudio-knob` | `webaudio-slider`
+**description**: 'cancel' event is emitted when end of value editing by pointing device dragging.
+
 ### 'click'  
 `webaudio-switch (kick)`  
 **description**: 'click' event is emitted if the 'kick' type webaudio-switch has clicked.

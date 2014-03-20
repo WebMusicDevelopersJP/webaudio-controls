@@ -20,11 +20,15 @@
 
 function Init() {
   var knobs = document.getElementsByTagName('webaudio-knob');
-  for(var i = 0; i < knobs.length; ++i)
+  for(var i = 0; i < knobs.length; ++i) {
     knobs[i].addEventListener('change', LogChange);
+    knobs[i].addEventListener('cancel', LogCancel);
+  }
   var sliders = document.getElementsByTagName('webaudio-slider');
-  for(var i = 0; i < sliders.length; ++i)
+  for(var i = 0; i < sliders.length; ++i) {
     sliders[i].addEventListener('change', LogChange);
+    sliders[i].addEventListener('cancel', LogCancel);
+  }
   var switches = document.getElementsByTagName('webaudio-switch');
   for(var i = 0; i < switches.length; ++i)
     switches[i].addEventListener('change', LogChange);
@@ -34,6 +38,11 @@ function Init() {
 }
 function LogChange(e) {
   var str="change: id="+e.target.id+" value:"+e.target.value;
+  document.getElementById("cons").innerHTML += (str+"<br/>");
+  console.log(str);
+}
+function LogCancel(e) {
+  var str="cancel: id="+e.target.id+" value:"+e.target.value;
   document.getElementById("cons").innerHTML += (str+"<br/>");
   console.log(str);
 }

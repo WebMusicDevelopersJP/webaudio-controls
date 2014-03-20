@@ -377,6 +377,7 @@
 				window.removeEventListener('mouseup', this.boundCancel, true);
 				window.removeEventListener('touchend', this.boundCancel, true);
 				window.removeEventListener('touchcancel', this.boundCancel, true);
+				this.fire('cancel');
 			};
 			return {
 			ready: function() {
