@@ -1,0 +1,8 @@
+node_modules
+bower_components
+polymer
+platform
+\.sass-cache
+lib/*
+.DS_Store
+*.sublime*
