@@ -1,0 +1,686 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Webaudio-controls by WebMusicDevelopersJP</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/WebMusicDevelopersJP/webaudio-controls">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/WebMusicDevelopersJP/webaudio-controls/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/WebMusicDevelopersJP/webaudio-controls/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Webaudio-controls</h1>
+          <p>GUI parts library for Web application using [Polymer] WebComponents</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/WebMusicDevelopersJP">WebMusicDevelopersJP</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="webaudio-controls" class="anchor" href="#webaudio-controls"><span class="octicon octicon-link"></span></a>webaudio-controls</h1>
+
+<p><strong>WebAudioControls</strong> is GUI parts library for Web application using [Polymer] WebComponents.<br>
+Especially suitable for audio-applications like VST plugins.  </p>
+
+<p><strong>WebAudioControls</strong> is consist of following components  </p>
+
+<table>
+<thead><tr>
+<th>Component</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>webaudio-knob</td>
+<td>Rotating or some other frame-by-frame animation knob</td>
+</tr>
+<tr>
+<td>webaudio-slider</td>
+<td>Vertical or Horizontal slider</td>
+</tr>
+<tr>
+<td>webaudio-switch</td>
+<td>Toggle/Kick/Radio switches</td>
+</tr>
+<tr>
+<td>webaudio-param</td>
+<td>Editable value display field</td>
+</tr>
+<tr>
+<td>webaudio-keyboard</td>
+<td>Mouse/Touch playable keyboard. multi-touch support.</td>
+</tr>
+</tbody>
+</table><p>Chrome / Firefox / Safari / Opera / IE compatible<br>
+iOS and Android touch devices compatible  </p>
+
+<p><a href="https://rawgithub.com/g200kg/webaudio-controls/master/sample1.html">Live Demo sample1 (with external image-files)</a><br><a href="https://rawgithub.com/g200kg/webaudio-controls/master/sample2.html">Live Demo sample2 (with code example)</a><br><a href="https://rawgithub.com/g200kg/webaudio-controls/master/sample3.html">Live Demo sample3 (Knob/Slider/Switch/Param/Keyboard default style)</a><br><a href="https://rawgithub.com/g200kg/webaudio-controls/master/sample4.html">Live Demo sample4 (webaudio-keyboard to webMIDIAPI)</a><br>
+ (need Mac+ChromeCanary+flagEnabled+MIDIdevice or Win+JazzPlugin or Mac+JazzPlugin+MidiDevice)<br><a href="http://www.g200kg.com/renoid/">Renoid : Practical application using webaudio-controls</a>  </p>
+
+<p>Using with external image-files.<br><a href="https://rawgithub.com/g200kg/webaudio-controls/master/sample1.html"><img src="img/demo.png" alt=""></a>  </p>
+
+<p>Default style with no external image-files.<br><a href="https://rawgithub.com/g200kg/webaudio-controls/master/sample3.html"><img src="img/sample3.png" alt=""></a>  </p>
+
+<h2>
+<a name="to-operate" class="anchor" href="#to-operate"><span class="octicon octicon-link"></span></a>To Operate</h2>
+
+<table>
+<thead><tr>
+<th>Operation</th>
+<th>Component</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>Click</strong></td>
+<td>Switch/Param</td>
+<td>toggle / activate the switch or focus the param</td>
+</tr>
+<tr>
+<td><strong>Drag</strong></td>
+<td>Knob/Slider</td>
+<td>up/right to increase value / down/left to decrease value</td>
+</tr>
+<tr>
+<td><strong>Shift+Drag</strong></td>
+<td>Knob/Slider</td>
+<td>fine control</td>
+</tr>
+<tr>
+<td><strong>Ctrl+Click / Command+Click(Mac)</strong></td>
+<td>Knob/Slider/Switch</td>
+<td>set to default value</td>
+</tr>
+<tr>
+<td><strong>Edit with Keyboard</strong></td>
+<td>Param</td>
+<td>edit the value directly</td>
+</tr>
+<tr>
+<td><strong>MouseWheel</strong></td>
+<td>Knob/Slider</td>
+<td>rotate upward to increase value / downward to decrease value</td>
+</tr>
+<tr>
+<td><strong>Shift+MouseWheel</strong></td>
+<td>Knob/Slider</td>
+<td>fine control</td>
+</tr>
+<tr>
+<td><strong>Mouse Button Press / Touch</strong></td>
+<td>Keyboard</td>
+<td>play keyboard. multi-touch is supported</td>
+</tr>
+</tbody>
+</table><hr><h2>
+<a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How to use</h2>
+
+<ul>
+<li>
+<p>load polymer.js</p>
+
+<blockquote>
+<p>&lt;script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.0.20130816/polymer.min.js"&gt;&lt;/script&gt;  </p>
+</blockquote>
+</li>
+<li>
+<p>link to webaudio-knob component</p>
+
+<blockquote>
+<p>&lt;link rel="import" href="components/controls.html" &gt;</p>
+</blockquote>
+</li>
+<li>
+<p>insert <code>webaudio-knob/slider/switch/param/keyboard</code> element</p>
+
+<blockquote>
+<p>&lt;webaudio-knob src="img/LittlePhatty.png" sprites="100" min="0" max="100"&gt;&lt;/webaudio-knob&gt;<br>
+&lt;webaudio-slider src="img/hsliderbody.png"&gt;&lt;/webaudio-slider&gt;<br>
+&lt;webaudio-switch src="img/switch_toggle.png" width="32" height="32"&gt;&lt;/webaudio-switch&gt;<br>
+&lt;webaudio-param src="" link="knob-1"&gt;&lt;/webaudio-param&gt;<br>
+&lt;webaudio-keyboard keys="25" &gt;&lt;/webaudio-keyboard&gt;  </p>
+</blockquote>
+</li>
+</ul><hr><h2>
+<a name="attributes" class="anchor" href="#attributes"><span class="octicon octicon-link"></span></a>Attributes</h2>
+
+<h3>
+<a name="webaudio-knob" class="anchor" href="#webaudio-knob"><span class="octicon octicon-link"></span></a>webaudio-knob</h3>
+
+<table>
+<thead><tr>
+<th>Attribute</th>
+<th>Options</th>
+<th>Default</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>src</strong></td>
+<td>string</td>
+<td>Internal embedded resource is used if not specified</td>
+<td>url of the vertical stitched knob image</td>
+</tr>
+<tr>
+<td><strong>value</strong></td>
+<td>float</td>
+<td><code>0</code></td>
+<td>The current value. Also used as initial value if specified</td>
+</tr>
+<tr>
+<td><strong>defvalue</strong></td>
+<td>float</td>
+<td>Initial 'value' is used if not specified</td>
+<td>The default value that will be used when ctrl+click</td>
+</tr>
+<tr>
+<td><strong>min</strong></td>
+<td>float</td>
+<td><code>0</code></td>
+<td>Minimum value of the knob</td>
+</tr>
+<tr>
+<td><strong>max</strong></td>
+<td>float</td>
+<td><code>100</code></td>
+<td>Maximum value of the knob</td>
+</tr>
+<tr>
+<td><strong>step</strong></td>
+<td>float</td>
+<td><code>1</code></td>
+<td>Value step of the control. The 'value' is always rounded to multiple of 'step'</td>
+</tr>
+<tr>
+<td><strong>width</strong></td>
+<td>int</td>
+<td><code>64</code></td>
+<td>Knob display width in px</td>
+</tr>
+<tr>
+<td><strong>height</strong></td>
+<td>int</td>
+<td><code>64</code></td>
+<td>Knob display height in px</td>
+</tr>
+<tr>
+<td><strong>diameter</strong></td>
+<td>int</td>
+<td><code>64</code></td>
+<td>Knob display diameter in px. This attribute can be used instead of width / height if the display image is square</td>
+</tr>
+<tr>
+<td><strong>sprites</strong></td>
+<td>int</td>
+<td><code>0</code></td>
+<td>if <code>0</code>, the "src" image should be single frame image that indicate middle position. the image will be rotated -135deg to +135deg. if "sprirites" is not <code>0</code>, the "src" image should be stitched multi-framed image. "sprites" specify the max frame number in the stitched knob image. Note that this is (number of frames) - 1</td>
+</tr>
+<tr>
+<td><strong>sensitivity</strong></td>
+<td>float</td>
+<td><code>1</code></td>
+<td>Pointing device sensitivity. min-max range correspond to (128 / 'sensitivity') px</td>
+</tr>
+<tr>
+<td><strong>valuetip</strong></td>
+<td>
+<code>0</code>,<code>1</code>
+</td>
+<td><code>1</code></td>
+<td>Enable the overlaid value-tip display.</td>
+</tr>
+<tr>
+<td><strong>tooltip</strong></td>
+<td>string</td>
+<td><code>null</code></td>
+<td>Tooltip text that will be shown when mouse hover a while</td>
+</tr>
+<tr>
+<td><strong>enable</strong></td>
+<td>
+<code>0</code>,<code>1</code>
+</td>
+<td><code>1</code></td>
+<td>Enable control with the pointing device.</td>
+</tr>
+</tbody>
+</table><h3>
+<a name="webaudio-slider" class="anchor" href="#webaudio-slider"><span class="octicon octicon-link"></span></a>webaudio-slider</h3>
+
+<table>
+<thead><tr>
+<th>Attribute</th>
+<th>Options</th>
+<th>Default</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>src</strong></td>
+<td>string</td>
+<td>Internal embedded resource is used if not specified</td>
+<td>url of the slider background image</td>
+</tr>
+<tr>
+<td><strong>knobsrc</strong></td>
+<td>string</td>
+<td>Internal embedded resouce is used if not specified</td>
+<td>url of the slider knob part image</td>
+</tr>
+<tr>
+<td><strong>value</strong></td>
+<td>float</td>
+<td><code>0</code></td>
+<td>The current value. Also used as initial value if specified</td>
+</tr>
+<tr>
+<td><strong>defvalue</strong></td>
+<td>float</td>
+<td>Initial 'value' is used if not specified</td>
+<td>The default value that will be used when ctrl+click</td>
+</tr>
+<tr>
+<td><strong>min</strong></td>
+<td>float</td>
+<td><code>0</code></td>
+<td>Minimum value of the slider</td>
+</tr>
+<tr>
+<td><strong>max</strong></td>
+<td>float</td>
+<td><code>100</code></td>
+<td>Maximum value of the slider</td>
+</tr>
+<tr>
+<td><strong>step</strong></td>
+<td>float</td>
+<td><code>1</code></td>
+<td>Value step of the control. The 'value' is always rounded to multiple of 'step'</td>
+</tr>
+<tr>
+<td><strong>width</strong></td>
+<td>int</td>
+<td><code>24</code></td>
+<td>Slider display width in px</td>
+</tr>
+<tr>
+<td><strong>height</strong></td>
+<td>int</td>
+<td><code>128</code></td>
+<td>Slider display height in px</td>
+</tr>
+<tr>
+<td><strong>knobwidth</strong></td>
+<td>int</td>
+<td>same as 'width' if 'direction' is <code>vert</code>, or same as 'height' if 'direction' is <code>horz</code>
+</td>
+<td>Slider knob part width in px</td>
+</tr>
+<tr>
+<td><strong>knobheight</strong></td>
+<td>int</td>
+<td>same as 'width' if 'direction' is <code>vert</code>, or same as 'height' if 'direction' is <code>horz</code>
+</td>
+<td>Slider knob part height in px</td>
+</tr>
+<tr>
+<td><strong>ditchLength</strong></td>
+<td>int</td>
+<td>('height'-'knobheight') or ('width'-'knobwidth')  depends on 'direction'</td>
+<td>Knob movable length</td>
+</tr>
+<tr>
+<td><strong>direction</strong></td>
+<td>
+<code>"vert"</code>,<code>"horz"</code>
+</td>
+<td><code>"vert"</code></td>
+<td>Slider direction. vertical or horizontal</td>
+</tr>
+<tr>
+<td><strong>sensitivity</strong></td>
+<td>float</td>
+<td><code>1</code></td>
+<td>Pointing device sensitivity. min-max range correspond to (128 / 'sensitivity') px</td>
+</tr>
+<tr>
+<td><strong>valuetip</strong></td>
+<td>
+<code>0</code>,<code>1</code>
+</td>
+<td><code>1</code></td>
+<td>Enable the overlaid value-tip display.</td>
+</tr>
+<tr>
+<td><strong>tooltip</strong></td>
+<td>string</td>
+<td><code>null</code></td>
+<td>Tooltip text that will be shown when mouse hover a while</td>
+</tr>
+<tr>
+<td><strong>enable</strong></td>
+<td>
+<code>0</code>, <code>1</code>
+</td>
+<td><code>1</code></td>
+<td>Enable control with the pointing device.</td>
+</tr>
+</tbody>
+</table><h3>
+<a name="webaudio-switch" class="anchor" href="#webaudio-switch"><span class="octicon octicon-link"></span></a>webaudio-switch</h3>
+
+<table>
+<thead><tr>
+<th>Attribute</th>
+<th>Options</th>
+<th>Default</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>src</strong></td>
+<td>string</td>
+<td>Internal embedded resource is used if not specified</td>
+<td>url of the vertical stitched switch image</td>
+</tr>
+<tr>
+<td><strong>value</strong></td>
+<td>
+<code>0</code>,<code>1</code>
+</td>
+<td><code>0</code></td>
+<td>The current value (<code>0</code> or <code>1</code>). Also used as initial value of the switch if specified</td>
+</tr>
+<tr>
+<td><strong>defvalue</strong></td>
+<td>
+<code>0</code>,<code>1</code>
+</td>
+<td>Initial 'value' is used if not specified</td>
+<td>The default value that will be used when ctrl+click</td>
+</tr>
+<tr>
+<td><strong>width</strong></td>
+<td>int</td>
+<td><code>32</code></td>
+<td>Switch display width in px</td>
+</tr>
+<tr>
+<td><strong>height</strong></td>
+<td>int</td>
+<td><code>32</code></td>
+<td>Switch display height in px</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>
+<code>"toggle"</code>,<code>"kick"</code>,<code>"radio"</code>
+</td>
+<td><code>"toggle"</code></td>
+<td>Switch type. <code>"toggle"</code> switch has so-called 'checkbox' function. <code>"radio"</code> switch is a radio-button and the <code>"kick"</code> switch is a general command button</td>
+</tr>
+<tr>
+<td><strong>group</strong></td>
+<td>string</td>
+<td><code>null</code></td>
+<td>Group id string used if the 'type' is <code>"radio"</code>. Only one switch will be set to <code>"1"</code> in same group</td>
+</tr>
+<tr>
+<td><strong>tooltip</strong></td>
+<td>string</td>
+<td><code>null</code></td>
+<td>Tooltip text that will be shown when mouse hover a while</td>
+</tr>
+<tr>
+<td><strong>enable</strong></td>
+<td>
+<code>0</code>,<code>1</code>
+</td>
+<td><code>1</code></td>
+<td>Enable control with the pointing device.</td>
+</tr>
+</tbody>
+</table><h3>
+<a name="webaudio-param" class="anchor" href="#webaudio-param"><span class="octicon octicon-link"></span></a>webaudio-param</h3>
+
+<table>
+<thead><tr>
+<th>Attribute</th>
+<th>Options</th>
+<th>Default</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>src</strong></td>
+<td>string</td>
+<td>Black rectangle if not specified</td>
+<td>url of the background image. Transparent if set to <code>""</code>
+</td>
+</tr>
+<tr>
+<td><strong>value</strong></td>
+<td>float</td>
+<td><code>0</code></td>
+<td>The current value. Usually same as linked control</td>
+</tr>
+<tr>
+<td><strong>width</strong></td>
+<td>int</td>
+<td><code>32</code></td>
+<td>Parameter display width in px</td>
+</tr>
+<tr>
+<td><strong>height</strong></td>
+<td>int</td>
+<td><code>16</code></td>
+<td>Parameter display height in px</td>
+</tr>
+<tr>
+<td><strong>fontsize</strong></td>
+<td>int</td>
+<td><code>9</code></td>
+<td>Font-size of the parameter display</td>
+</tr>
+<tr>
+<td><strong>color</strong></td>
+<td>string</td>
+<td><code>"#ffffff"</code></td>
+<td>Text color</td>
+</tr>
+<tr>
+<td><strong>link</strong></td>
+<td>string</td>
+<td><code>null</code></td>
+<td>Specify the linked webaudio-knob/slider/switch by Id</td>
+</tr>
+</tbody>
+</table><h3>
+<a name="webaudio-keyboard" class="anchor" href="#webaudio-keyboard"><span class="octicon octicon-link"></span></a>webaudio-keyboard</h3>
+
+<table>
+<thead><tr>
+<th>Attribute</th>
+<th>Options</th>
+<th>Default</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>values</strong></td>
+<td>int array</td>
+<td><code>[]</code></td>
+<td>The array of current pressed key numbers. "values" may has more than one element in multi-touch environment.</td>
+</tr>
+<tr>
+<td><strong>width</strong></td>
+<td>int</td>
+<td><code>480</code></td>
+<td>Keyboard display width in px</td>
+</tr>
+<tr>
+<td><strong>height</strong></td>
+<td>int</td>
+<td><code>128</code></td>
+<td>Keyboard display height in px</td>
+</tr>
+<tr>
+<td><strong>min</strong></td>
+<td>int</td>
+<td><code>0</code></td>
+<td>Lowest Key number. Each key is numbered incrementally from this number. If the "min" is not <code>0</code> and the modulo 12 is not zero, the keyboard is started from corresponding position (not-C). Note that the specified key should be a 'white-key'.</td>
+</tr>
+<tr>
+<td><strong>keys</strong></td>
+<td>int</td>
+<td><code>25</code></td>
+<td>Number of keys. <code>25</code> means 25 keys keyboard.</td>
+</tr>
+<tr>
+<td><strong>colors</strong></td>
+<td>string</td>
+<td>'#222; #eee;#ccc; #333;#000; #e88;#c44; #c33;#800'</td>
+<td>semicolon separated 9 keyboard colors. 'border; whitekey-grad-from;whitekey-grad-to; blackkey-grad-from;blackkey-grad-to; active-whitekey-grad-from;active-whitekey-grad-to; active-blackkey-grad-from;active-blackkey-grad-to'. Each key surface can has garadient left to right with 'from' and 'to'.</td>
+</tr>
+<tr>
+<td><strong>enable</strong></td>
+<td>
+<code>0</code>,<code>1</code>
+</td>
+<td><code>1</code></td>
+<td>Enable control with the pointing device.</td>
+</tr>
+</tbody>
+</table><hr><h2>
+<a name="functions" class="anchor" href="#functions"><span class="octicon octicon-link"></span></a>Functions</h2>
+
+<h3>
+<a name="setvaluevalue-fire" class="anchor" href="#setvaluevalue-fire"><span class="octicon octicon-link"></span></a>setValue(value, fire)</h3>
+
+<p><code>webaudio-knob</code> | <code>webaudio-slider</code> | <code>webaudio-switch</code><br><strong>description</strong>: Each control can be setup and redraw by calling this function from JavaScript.
+If the <code>fire</code> parameter is <code>undefined</code> or <code>false</code>, this function will not fire <code>'change'</code> event. Or the <code>change</code> event will be fired.</p>
+
+<h3>
+<a name="setnotestatenote" class="anchor" href="#setnotestatenote"><span class="octicon octicon-link"></span></a>setNote(state,note)</h3>
+
+<p><code>webaudio-keyboard</code><br><strong>description</strong>: webaudio-keyboard can be setup pressing state with this function from JavaScript. corresponding key specified by the <code>note</code> is pressed if the <code>state</code> is non-zero otherwise the key is released. This function will NOT fire the 'change' event.</p>
+
+<hr><h2>
+<a name="events" class="anchor" href="#events"><span class="octicon octicon-link"></span></a>Events</h2>
+
+<h3>
+<a name="change" class="anchor" href="#change"><span class="octicon octicon-link"></span></a>'change'</h3>
+
+<p><code>webaudio-knob</code> | <code>webaudio-slider</code> | <code>webaudio-switch</code> | <code>webaudio-keyboard</code><br><strong>description</strong>: 'change' event is emitted everytime value changes by user action or setValue() function with fire flag is <code>true</code>. In the event handler of <code>webaudio-knob</code>,<code>webaudio-slider</code> or <code>webaudio-switch</code>, current value can be get with referring <code>event.target.value</code>.  </p>
+
+<pre><code>var knobs = document.getElementsByTagName('webaudio-knob');
+for (var i = 0; i &lt; knobs.length; i++) {
+  var knob = knobs[i];
+  knob.addEventListener('change', function(e) {
+    console.log(e.target.value);
+  });
+}
+</code></pre>
+
+<p>For the <code>webaudio-keyboard</code>, each 'change' event has the property '.note' that contain a array <code>[key-state, key-number]</code>. For example <code>event.note = [1, 60]</code> if the key#60 is on, or <code>event.note = [0, 60]</code> if the key#60 is off.</p>
+
+<pre><code>var keyboard = document.getElementsById('keyboard');
+keyboard.addEventListener('change', function(e) {
+    if(e.note[0])
+        console.log("Note-On:"+e.note[1]);
+    else
+        console.log("Note-Off:"+e.note[1]);
+});
+</code></pre>
+
+<p><strong>Note</strong>: The addEventListener() function is recommended for event handler setup instead of 'onchange=' attribute. 'onchange=' attribute seems not work on Safari.</p>
+
+<h3>
+<a name="cancel" class="anchor" href="#cancel"><span class="octicon octicon-link"></span></a>'cancel'</h3>
+
+<p><code>webaudio-knob</code> | <code>webaudio-slider</code>
+<strong>description</strong>: 'cancel' event is emitted when end of value editing by pointing device dragging.</p>
+
+<h3>
+<a name="click" class="anchor" href="#click"><span class="octicon octicon-link"></span></a>'click'</h3>
+
+<p><code>webaudio-switch (kick)</code><br><strong>description</strong>: 'click' event is emitted if the 'kick' type webaudio-switch has clicked.</p>
+
+<hr><h2>
+<a name="creating-knob-images" class="anchor" href="#creating-knob-images"><span class="octicon octicon-link"></span></a>Creating knob images</h2>
+
+<p>webaudio-knob (with sprites is <code>0</code> (default)) use a single frame knob image that indicate center position.
+For example,<br><img src="img/testknob.png" alt=""><br>
+This image will be rotated from -135deg to +135deg. This approach will works well if the image is flat designed, but more complex animation (for example, drop-shadowed, highlighted or something elastic) will need pre-rendered frame-by-frame animation as below.</p>
+
+<p>webaudio-knob (with non zero "sprites") use a vertical 'stitched' multi-frames animation image, and webaudio-switch use a vertical 'stitched' two-frames animation image.
+For example,<br><img src="https://raw.github.com/g200kg/webaudio-controls/master/img/LittlePhatty_sample.png" alt=""><img src="https://raw.github.com/g200kg/webaudio-controls/master/img/switch_toggle.png" alt=""></p>
+
+<p>This knob example has only 5 frames but it should has more frames for smooth animation. I recommend to use JKnobMan/WebKnobMan for making these stitched images,</p>
+
+<ul>
+<li>
+<a href="http://www.g200kg.com/en/software/knobman.html">JKnobMan</a> -- Java based Knob image creation tool.</li>
+<li>
+<a href="http://www.g200kg.com/en/webknobman/">WebKnobMan</a> -- WebApp version of the JknobMan</li>
+<li>
+<a href="http://www.g200kg.com/en/webknobman/gallery.php">KnobGallery</a> -- knob data sharing space</li>
+</ul><hr><p>Here is a brief instruction  to export knob-image from KnobGallery</p>
+
+<ul>
+<li>Go to <a href="http://www.g200kg.com/en/webknobman/gallery.php">KnobGallery</a>
+</li>
+<li>Find your favorite knob design and click 'Open with WebKnobMan'</li>
+<li>Click on 'Export' to download <code>png</code> file</li>
+<li>Of course, you can create your own!</li>
+</ul><p><strong>Note: comply with license requirements</strong></p>
+
+<hr><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>WebAudio-Controls is developped based on:  </p>
+
+<ul>
+<li>
+<a href="https://github.com/agektmr/webaudio-knob">WebAudio-Knob</a> by <a href="http://google.com/+agektmr">Eiji Kitamura</a><br>
+</li>
+<li>
+<a href="https://github.com/ryoyakawai/webaudio-slider">WebAudio-Slider</a> by <a href="https://plus.google.com/108242669191458983485/posts">Ryoya KAWAI</a><br>
+</li>
+<li>
+<a href="http://aikelab.net/switch/">WebAudio-Switch</a> by <a href="http://d.hatena.ne.jp/aike/">Keisuke Ai</a><br>
+Integrated and enhanced by <a href="http://www.g200kg.com/">g200kg</a>
+</li>
+</ul><p>Copyright (c) 2013 Eiji Kitamura / Ryoya KAWAI / Keisuke Ai / g200kg (Tatsuya Shinyagaito)<br>
+Licensed under the Apache License, Version 2.0</p>
+
+<hr><p>Knob/Switch images in samples are from <a href="http://www.g200kg.com/en/webknobman/gallery.php">Knob Gallery</a><br><a href="http://www.g200kg.com/en/webknobman/gallery.php?m=p&amp;p=58">switch_toggle.knob</a> by <a href="http://bji.yukihotaru.com/">az</a> (c) 2011 <a href="http://creativecommons.org/licenses/by/3.0/">CC-BY</a></p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
