@@ -46,24 +46,32 @@ Operation | Component | Description
 
 - bower install
 
-    cd webcomponents
+```
+    cd webcomponents  
     bower install
+```
 
 - load platform.js (polymer.js will be included inside webaudio-controls.html)
 
+```
     <script src="platform/platform.js"></script>
+```
 
 - link to webaudio-knob etc. component
 
+```
     <link rel="import" href="webcomponents/webaudio-controls.html">
+```
 
 - insert `webaudio-knob/slider/switch/param/keyboard` element
 
-    <webaudio-knob src="img/LittlePhatty.png" sprites="100" min="0" max="100"></webaudio-knob>
-    <webaudio-slider src="img/hsliderbody.png"></webaudio-slider>
-    <webaudio-switch src="img/switch_toggle.png" width="32" height="32"></webaudio-switch>
-    <webaudio-param src="" link="knob-1"></webaudio-param>
+```
+    <webaudio-knob src="img/LittlePhatty.png" sprites="100" min="0" max="100"></webaudio-knob>  
+    <webaudio-slider src="img/hsliderbody.png"></webaudio-slider>  
+    <webaudio-switch src="img/switch_toggle.png" width="32" height="32"></webaudio-switch>  
+    <webaudio-param src="" link="knob-1"></webaudio-param>  
     <webaudio-keyboard keys="25" ></webaudio-keyboard>
+```
 
 ---
 ## Attributes
