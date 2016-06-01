@@ -3,7 +3,7 @@
     "polymer": "Polymer/polymer#master"
   },
   "name": "webaudio-controls",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "main": "webaudio-controls.html",
   "author": "WebMusicDevelopersJP",
   "description": "GUI parts library for Web application using [Polymer] WebComponents",
