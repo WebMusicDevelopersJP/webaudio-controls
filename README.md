@@ -1,11 +1,12 @@
 # webaudio-controls
-
 **WebAudioControls** is GUI parts library for Web application using [Polymer] WebComponents.  
 Especially suitable for audio-applications like VST plugins.  
 
+Polymer 1.4 compatible
+
 **WebAudioControls** is consist of following components  
 
-Component | Description 
+Component | Description
 ---|---
 webaudio-knob | Rotating or some other frame-by-frame animation knob
 webaudio-slider | Vertical or Horizontal slider
@@ -20,7 +21,7 @@ iOS and Android touch devices compatible
 [Live Demo sample2 (with code example)](https://rawgithub.com/WebMusicDevelopersJP/webaudio-controls/master/sample2.html)  
 [Live Demo sample3 (Knob/Slider/Switch/Param/Keyboard default style)](https://rawgithub.com/WebMusicDevelopersJP/webaudio-controls/master/sample3.html)  
 [Live Demo sample4 (webaudio-keyboard to webMIDIAPI)](https://rawgithub.com/WebMusicDevelopersJP/webaudio-controls/master/sample4.html)  
- (need Mac+ChromeCanary+flagEnabled+MIDIdevice or Win+JazzPlugin or Mac+JazzPlugin+MidiDevice)  
+ (need Web MIDI API support and external MIDI Device)  
 [Renoid : Practical application using webaudio-controls](http://www.g200kg.com/renoid/)  
 
 Using with external image-files.  
@@ -30,6 +31,8 @@ Default style with no external image-files.
 [![](img/sample3.png)](https://rawgithub.com/WebMusicDevelopersJP/webaudio-controls/master/sample3.html)  
 
 ## To Operate  
+Following user actions are supported.
+
 Operation | Component | Description
 ---|---|---
 **Click** | Switch/Param | toggle / activate the switch or focus the param
@@ -44,34 +47,22 @@ Operation | Component | Description
 ---
 ## How to use
 
-- bower install
+- Install Polymer
+> Use command 'bower install --save Polymer/polymer', if you use bower. Or download zipped file and deploy appropriately.
 
-```
-    cd webcomponents  
-    bower install
-```
+- load webcomponents.js and polymer  
+> &lt;script src="bower_components/webcomponentsjs/webcomponents.js"&gt;&lt;/script&gt;<br/>
+  &lt;link rel="import" href="bower_components/polymer/polymer.html"&gt;
 
-- load platform.js (polymer.js will be included inside webaudio-controls.html)
-
-```
-    <script src="platform/platform.js"></script>
-```
-
-- link to webaudio-knob etc. component
-
-```
-    <link rel="import" href="webcomponents/webaudio-controls.html">
-```
+- load webaudio-contols
+> &lt;link rel="import" href="webcomponents/webaudio-controls.html" &gt;
 
 - insert `webaudio-knob/slider/switch/param/keyboard` element
-
-```
-    <webaudio-knob src="img/LittlePhatty.png" sprites="100" min="0" max="100"></webaudio-knob>  
-    <webaudio-slider src="img/hsliderbody.png"></webaudio-slider>  
-    <webaudio-switch src="img/switch_toggle.png" width="32" height="32"></webaudio-switch>  
-    <webaudio-param src="" link="knob-1"></webaudio-param>  
-    <webaudio-keyboard keys="25" ></webaudio-keyboard>
-```
+> &lt;webaudio-knob src="img/LittlePhatty.png" sprites="100" min="0" max="100"&gt;&lt;/webaudio-knob&gt;  
+> &lt;webaudio-slider src="img/hsliderbody.png"&gt;&lt;/webaudio-slider&gt;  
+> &lt;webaudio-switch src="img/switch_toggle.png" width="32" height="32"&gt;&lt;/webaudio-switch&gt;  
+> &lt;webaudio-param src="" link="knob-1"&gt;&lt;/webaudio-param&gt;  
+> &lt;webaudio-keyboard keys="25" &gt;&lt;/webaudio-keyboard&gt;  
 
 ---
 ## Attributes
@@ -80,20 +71,23 @@ Operation | Component | Description
 
 Attribute  | Options      | Default          | Description
 ---        | ---                  | ---                 | ---
-**src** | string | Internal embedded resource is used if not specified | url of the vertical stitched knob image
+**src** | string | Internal embedded resource is used if not specified | url of the knob image. (single frame or vertical stitched)
 **value** | float | `0` | The current value. Also used as initial value if specified
 **defvalue** | float | Initial 'value' is used if not specified | The default value that will be used when ctrl+click
 **min** | float | `0` | Minimum value of the knob
 **max** | float | `100` | Maximum value of the knob
 **step** | float | `1` | Value step of the control. The 'value' is always rounded to multiple of 'step'
+**log** | int | `0` | If 1, knob scale is logalithmic. In this mode, `step` is ignored.
+**units** | string | `null` | specified units (e.g. Hz) is added to valuetip
 **width** | int | `64` | Knob display width in px
 **height** | int | `64` | Knob display height in px
 **diameter** | int | `64` | Knob display diameter in px. This attribute can be used instead of width / height if the display image is square
-**sprites** | int | `0` | if `0`, the "src" image should be single frame image that indicate middle position. the image will be rotated -135deg to +135deg. if "sprirites" is not `0`, the "src" image should be stitched multi-framed image. "sprites" specify the max frame number in the stitched knob image. Note that this is (number of frames) - 1
-**sensitivity** | float | `1` | Pointing device sensitivity. min-max range correspond to (128 / 'sensitivity') px
+**sprites** | int | `0` | if `0`, the `src` image should be single frame image that indicate middle position. the image will be rotated -135deg to +135deg. if `sprirites` is not `0`, the `src` image should be stitched multi-framed image. `sprites` specify the max frame number in the stitched knob image. Note that this is (number of frames) - 1
+**sensitivity** | float | `1` | Pointing device sensitivity. min-max range correspond to (128 / `sensitivity`) px
 **valuetip** | `0`,`1` | `1` | Enable the overlaid value-tip display.
 **tooltip** | string | `null` | Tooltip text that will be shown when mouse hover a while
 **enable** | `0`,`1` | `1` | Enable control with the pointing device.
+**colors** | string | "#e00;#000;#000" | Semicolon separated 3 colors for 'indicator', 'body' and 'highlight'. These colors are used in default knob (when `src` is not provided).
 
 ### webaudio-slider
 
@@ -110,12 +104,14 @@ Attribute  | Options      | Default          | Description
 **height** | int | `128` | Slider display height in px
 **knobwidth** | int | same as 'width' if 'direction' is `vert`, or same as 'height' if 'direction' is `horz` | Slider knob part width in px
 **knobheight** | int | same as 'width' if 'direction' is `vert`, or same as 'height' if 'direction' is `horz` | Slider knob part height in px
-**ditchLength** | int | ('height'-'knobheight') or ('width'-'knobwidth')  depends on 'direction' | Knob movable length
+**ditchlength** | int | ('height'-'knobheight') or ('width'-'knobwidth')  depends on 'direction' | Knob movable length
 **direction** | `"vert"`,`"horz"` | `"vert"` | Slider direction. vertical or horizontal
 **sensitivity** | float | `1` | Pointing device sensitivity. min-max range correspond to (128 / 'sensitivity') px
 **valuetip** | `0`,`1` | `1` | Enable the overlaid value-tip display.
 **tooltip** | string | `null` | Tooltip text that will be shown when mouse hover a while
 **enable** | `0`, `1` | `1` | Enable control with the pointing device.
+**colors** | string | "#e00;#000;#fff" | Semicolon separated 3 colors for 'knob', 'background' and 'highlight'. These colors are used in default knob (when `src` or `knobsrc` is not provided).
+
 
 ### webaudio-switch
 
@@ -128,14 +124,16 @@ Attribute  | Options      | Default          | Description
 **height** | int | `32` | Switch display height in px
 **type** | `"toggle"`,`"kick"`,`"radio"` | `"toggle"` | Switch type. `"toggle"` switch has so-called 'checkbox' function. `"radio"` switch is a radio-button and the `"kick"` switch is a general command button
 **group** | string | `null` | Group id string used if the 'type' is `"radio"`. Only one switch will be set to `"1"` in same group
+**invert** | `0`,`1` | `0` | exchange on and off image
 **tooltip** | string | `null` | Tooltip text that will be shown when mouse hover a while
 **enable** | `0`,`1` | `1` | Enable control with the pointing device.
+**colors** | string | "#e00;#000;#fff" | Semicolon separated 3 colors for 'knob', 'background' and 'highlight'. These colors are used in default switch (when `src` is not provided).
 
 ### webaudio-param
 
 Attribute  | Options      | Default          | Description
 ---        | ---                  | ---                 | ---
-**src** | string | Black rectangle if not specified | url of the background image. Transparent if set to `""`
+**src** | string | Black rectangle if not specified | Background image or color. Transparent if set to `""`.  `#rrggbb` or `rgb(r,g,b)` for specified color, or url to background image.
 **value** | float | `0` | The current value. Usually same as linked control
 **width** | int | `32` | Parameter display width in px
 **height** | int | `16` | Parameter display height in px
@@ -197,10 +195,6 @@ keyboard.addEventListener('change', function(e) {
 
 **Note**: The addEventListener() function is recommended for event handler setup instead of 'onchange=' attribute. 'onchange=' attribute seems not work on Safari.
 
-### 'cancel'
-`webaudio-knob` | `webaudio-slider`
-**description**: 'cancel' event is emitted when end of value editing by pointing device dragging.
-
 ### 'click'  
 `webaudio-switch (kick)`  
 **description**: 'click' event is emitted if the 'kick' type webaudio-switch has clicked.
@@ -214,8 +208,8 @@ This image will be rotated from -135deg to +135deg. This approach will works wel
 
 webaudio-knob (with non zero "sprites") use a vertical 'stitched' multi-frames animation image, and webaudio-switch use a vertical 'stitched' two-frames animation image.
 For example,   
-![](https://raw.github.com/WebMusicDevelopersJP/webaudio-controls/master/img/LittlePhatty_sample.png)
-![](https://raw.github.com/WebMusicDevelopersJP/webaudio-controls/master/img/switch_toggle.png)  
+![](https://raw.github.com/g200kg/webaudio-controls/master/img/LittlePhatty_sample.png)
+![](https://raw.github.com/g200kg/webaudio-controls/master/img/switch_toggle.png)  
 
 This knob example has only 5 frames but it should has more frames for smooth animation. I recommend to use JKnobMan/WebKnobMan for making these stitched images,
 

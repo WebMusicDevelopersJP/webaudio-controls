@@ -1,6 +1,4 @@
 node_modules
-polymer
-platform
 \.sass-cache
 lib/*
 .DS_Store
