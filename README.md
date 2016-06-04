@@ -17,18 +17,18 @@ webaudio-keyboard | Mouse/Touch playable keyboard. multi-touch support.
 Chrome / Firefox / Safari / Opera / IE compatible  
 iOS and Android touch devices compatible  
 
-[Live Demo sample1 (with external image-files)](https://rawgithub.com/WebMusicDevelopersJP/webaudio-controls/master/sample1.html)  
-[Live Demo sample2 (with code example)](https://rawgithub.com/WebMusicDevelopersJP/webaudio-controls/master/sample2.html)  
-[Live Demo sample3 (Knob/Slider/Switch/Param/Keyboard default style)](https://rawgithub.com/WebMusicDevelopersJP/webaudio-controls/master/sample3.html)  
-[Live Demo sample4 (webaudio-keyboard to webMIDIAPI)](https://rawgithub.com/WebMusicDevelopersJP/webaudio-controls/master/sample4.html)  
- (need Web MIDI API support and external MIDI Device)  
+[Live Demo sample1 (with external image-files)](https://rawgithub.com/g200kg/webaudio-controls/master/sample1.html)  
+[Live Demo sample2 (with code example)](https://rawgithub.com/g200kg/webaudio-controls/master/sample2.html)  
+[Live Demo sample3 (Knob/Slider/Switch/Param/Keyboard default style)](https://rawgithub.com/g200kg/webaudio-controls/master/sample3.html)  
+[Live Demo sample4 (webaudio-keyboard to webMIDIAPI)](https://rawgithub.com/g200kg/webaudio-controls/master/sample4.html)  
+ (need Mac+ChromeCanary+flagEnabled+MIDIdevice or Win+JazzPlugin or Mac+JazzPlugin+MidiDevice)  
 [Renoid : Practical application using webaudio-controls](http://www.g200kg.com/renoid/)  
 
 Using with external image-files.  
-[![](img/demo.png)](https://rawgithub.com/WebMusicDevelopersJP/webaudio-controls/master/sample1.html)  
+[![](img/demo.png)](https://rawgithub.com/g200kg/webaudio-controls/master/sample1.html)  
 
 Default style with no external image-files.  
-[![](img/sample3.png)](https://rawgithub.com/WebMusicDevelopersJP/webaudio-controls/master/sample3.html)  
+[![](img/sample3.png)](https://rawgithub.com/g200kg/webaudio-controls/master/sample3.html)  
 
 ## To Operate  
 Following user actions are supported.
@@ -51,7 +51,7 @@ Operation | Component | Description
 > Use command 'bower install --save Polymer/polymer', if you use bower. Or download zipped file and deploy appropriately.
 
 - load webcomponents.js and polymer  
-> &lt;script src="bower_components/webcomponentsjs/webcomponents.js"&gt;&lt;/script&gt;<br/>
+> &lt;script src="bower_components/webcomponentsjs/webcomponents-lite-min.js"&gt;&lt;/script&gt;<br/>
   &lt;link rel="import" href="bower_components/polymer/polymer.html"&gt;
 
 - load webaudio-contols
@@ -133,12 +133,12 @@ Attribute  | Options      | Default          | Description
 
 Attribute  | Options      | Default          | Description
 ---        | ---                  | ---                 | ---
-**src** | string | Black rectangle if not specified | Background image or color. Transparent if set to `""`.  `#rrggbb` or `rgb(r,g,b)` for specified color, or url to background image.
+**src** | string | Black rectangle if not specified | Background image or color. Transparent if set to `""`, or url to background image.
 **value** | float | `0` | The current value. Usually same as linked control
 **width** | int | `32` | Parameter display width in px
 **height** | int | `16` | Parameter display height in px
 **fontsize** | int | `9` | Font-size of the parameter display
-**color** | string | `"#ffffff"` | Text color
+**colors** | string | `"#e00;#000"` | Semicolon separated 2 colors for text and background. background color is used when `src` is not defined.
 **link** | string | `null` | Specify the linked webaudio-knob/slider/switch by Id
 
 ### webaudio-keyboard
