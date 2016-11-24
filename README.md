@@ -190,6 +190,7 @@ var knobs = document.getElementsByTagName('webaudio-knob');
 for (var i = 0; i < knobs.length; i++) {
   var knob = knobs[i];
   knob.addEventListener('change', function(e) {
+  // knob.addEventListener('change', (e) => { /* in ES6 */
     console.log(e.target.value);
   });
 }
@@ -199,7 +200,8 @@ For the `webaudio-keyboard`, each 'change' event has the property '.note' that c
 
 ```javascript
 var keyboard = document.getElementsById('keyboard');
-keyboard.addEventListener('change', function(e) {
+keyboard.addEventListener('change', function(e) { 
+// keyboard.addEventListener('change', (e) => { /* in ES6 */
 	if(e.note[0])
 		console.log("Note-On:"+e.note[1]);
 	else
