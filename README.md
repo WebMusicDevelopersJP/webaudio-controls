@@ -47,22 +47,36 @@ Operation | Component | Description
 ---
 ## How to use
 
-- Install Polymer
-> Use command 'bower install --save Polymer/polymer', if you use bower. Or download zipped file and deploy appropriately.
+- Install Polymer & webaudio-controls
+-- Use bower 
+````shell
+$ bower install --save webaudio-controls
+````
+Or download zipped files.  
+To use webaudio-controls, these three components must be downloaded and be deployed appropriately.
+> Polymer: [Polymer/polymer](https://github.com/Polymer/polymer)  
+> webcomponentsjs: [Polymer/webcomponentsjs](https://github.com/webcomponents/webcomponentsjs)  
+> webaudio-controls: [WebMusicDevelopersJP/webaudio-controls](https://github.com/WebMusicDevelopersJP/webaudio-controls)  
 
 - load webcomponents.js and polymer  
-> &lt;script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"&gt;&lt;/script&gt;<br/>
-  &lt;link rel="import" href="bower_components/polymer/polymer.html"&gt;
+````html
+<script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script><br/>
+<link rel="import" href="bower_components/polymer/polymer.html">
+````
 
 - load webaudio-contols
-> &lt;link rel="import" href="bower_components/webaudio-controls/webaudio-controls.html" &gt;
+````html
+<link rel="import" href="bower_components/webaudio-controls/webaudio-controls.html">
+````
 
 - insert `webaudio-knob/slider/switch/param/keyboard` element
-> &lt;webaudio-knob src="img/LittlePhatty.png" sprites="100" min="0" max="100"&gt;&lt;/webaudio-knob&gt;  
-> &lt;webaudio-slider src="img/hsliderbody.png"&gt;&lt;/webaudio-slider&gt;  
-> &lt;webaudio-switch src="img/switch_toggle.png" width="32" height="32"&gt;&lt;/webaudio-switch&gt;  
-> &lt;webaudio-param src="" link="knob-1"&gt;&lt;/webaudio-param&gt;  
-> &lt;webaudio-keyboard keys="25" &gt;&lt;/webaudio-keyboard&gt;  
+````html
+<webaudio-knob src="img/LittlePhatty.png" sprites="100" min="0" max="100"></webaudio-knob>  
+<webaudio-slider src="img/hsliderbody.png"></webaudio-slider>
+<webaudio-switch src="img/switch_toggle.png" width="32" height="32"></webaudio-switch>  
+<webaudio-param src="" link="knob-1"></webaudio-param>  
+<webaudio-keyboard keys="25"></webaudio-keyboard>  
+````
 
 ---
 ## Attributes
@@ -171,7 +185,7 @@ If the `fire` parameter is `undefined` or `false`, this function will not fire `
 `webaudio-knob` | `webaudio-slider` | `webaudio-switch` | `webaudio-keyboard`  
 **description**: 'change' event is emitted everytime value changes by user action or setValue() function with fire flag is `true`. In the event handler of `webaudio-knob`,`webaudio-slider` or `webaudio-switch`, current value can be get with referring `event.target.value`.  
 
-```
+```javascript
 var knobs = document.getElementsByTagName('webaudio-knob');
 for (var i = 0; i < knobs.length; i++) {
   var knob = knobs[i];
@@ -183,7 +197,7 @@ for (var i = 0; i < knobs.length; i++) {
 
 For the `webaudio-keyboard`, each 'change' event has the property '.note' that contain a array `[key-state, key-number]`. For example `event.note = [1, 60]` if the key#60 is on, or `event.note = [0, 60]` if the key#60 is off.
 
-```
+```javascript
 var keyboard = document.getElementsById('keyboard');
 keyboard.addEventListener('change', function(e) {
 	if(e.note[0])
